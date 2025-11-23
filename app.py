@@ -27,7 +27,7 @@ def listBookbyId(id):
             return jsonify(book)
     pass
 
-@app.route('/editbookbyid/<int:id>', methods=['POST'])
+@app.route('/editbookbyid/<int:id>', methods=['PUT'])
 def editBookbyId(id):
     editValue = request.get_json()
     for index, book in enumerate(books):
@@ -43,7 +43,7 @@ def addBooks():
 
     return jsonify(books)
     
-@app.route('/delete/<int:id>', methods=['GET'])
+@app.route('/delete/<int:id>', methods=['DELETE'])
 def deleteBookbyId(id):
     for index, book in enumerate(books):
         if(book.get('id') == id):
