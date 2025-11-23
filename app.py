@@ -26,6 +26,15 @@ def listBookbyId(id):
         if(book.get('id') == id):
             return jsonify(book)
     pass
+
+@app.route('/editbookbyid/<int:id>', methods=['POST'])
+def editBookbyId(id):
+    editValue = request.get_json()
+    for index, book in enumerate(books):
+        if(book.get('id') == id):
+            books[index].update(editValue)
+            return jsonify(books[index])
+    pass
         
     
 
